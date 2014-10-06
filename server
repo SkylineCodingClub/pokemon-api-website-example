@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+import time
+import BaseHTTPServer
+
+from requestHandler import Handler
+
+HOST_NAME = "localhost"
+PORT_NUMBER = 8000
+
+httpd = BaseHTTPServer.HTTPServer((HOST_NAME, PORT_NUMBER), Handler)
+print time.asctime(), "Server started - {} {}".format(HOST_NAME, PORT_NUMBER)
+try:
+    httpd.serve_forever()
+except KeyboardInterrupt:
+    pass
+
+httpd.server_close()
+print time.asctime(), "Server stoped - {} {}".format(HOST_NAME, PORT_NUMBER)
