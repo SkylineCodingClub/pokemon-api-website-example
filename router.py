@@ -79,7 +79,7 @@ class Router():
             return self.read_file(disk_path)
         else:
             api_path = regex.groups()[0]
-            content = urllib2.urlopen("{}/{}".format(POKEAPI_URL, api_path))
+            content = urllib2.urlopen("{0}/{1}".format(POKEAPI_URL, api_path))
             if(content.getcode() == 200):
                 data = content.read()
                 self.write_file(disk_path, data)
@@ -95,7 +95,7 @@ class Router():
             response.send_response(200)
             return self.read_file(disk_path)
         else:
-            raise UpstreamError("Could not find file {}".format(path))
+            raise UpstreamError("Could not find file {0}".format(path))
 
     def do_query(self, path, params, regex, response):
         response.send_response(200)
